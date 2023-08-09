@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="219fbaf4-44e4-40a3-bf01-8ec4305040dd" name="更改" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JavaScript File" />
+        <option value="Interface" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="mavenHome" value="$APPLICATION_HOME_DIR$/apache-maven-3.8.7-bin/apache-maven-3.8.7" />
+        <option name="userSettingsFile" value="E:\IntelliJ IDEA\apache-maven-3.8.7-bin\apache-maven-3.8.7\conf\settings.xml" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="MavenRunner">
+    <option name="skipTests" value="true" />
+  </component>
+  <component name="ProjectId" id="2SvleGdV1KhgWVcS7iEcoJlI2yO" />
+  <component name="ProjectViewState">
+    <option name="autoscrollToSource" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;E:/IntelliJ IDEA/Project/riggie-take-out/src/main/java/com/hjw/mapper&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;模块&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;reference.projectsettings.compiler.javacompiler&quot;,
+    &quot;spring.configuration.checksum&quot;: &quot;761da4914bb8c37302f05352bda71209&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  },
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;mysql&quot;
+    ]
+  }
+}</component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\IntelliJ IDEA\Project\riggie-take-out\src\main\java\com\hjw\mapper" />
+      <recent name="E:\IntelliJ IDEA\Project\riggie-take-out\src\main\java\com\hjw\service\impl" />
+      <recent name="E:\IntelliJ IDEA\Project\riggie-take-out\src\main\java\com\hjw\service" />
+      <recent name="E:\IntelliJ IDEA\Project\riggie-take-out\src\main\java\com\hjw\controller" />
+      <recent name="E:\IntelliJ IDEA\Project\riggie-take-out\src\main\resources\front\styles" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="E:\IntelliJ IDEA\Project\riggie-take-out\src\main\resources\backend\page\demo" />
+      <recent name="E:\IntelliJ IDEA\Project\riggie-take-out\src\main\resources" />
+      <recent name="E:\IntelliJ IDEA\Project\riggie-take-out\src\main\resources\static\backend\styles" />
+      <recent name="E:\IntelliJ IDEA\Project\riggie-take-out\src\main\resources\static\backend\plugins\element-ui" />
+      <recent name="E:\IntelliJ IDEA\Project\riggie-take-out\src\main\java\com\hjw\pojo" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.hjw.service.impl" />
+      <recent name="com.hjw.service" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Spring Boot.RiggieTakeOutApplication">
+    <configuration name="index.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/src/main/resources/backend/js/index.js" working-dir="$PROJECT_DIR$/src/main/resources/backend/js">
+      <method v="2" />
+    </configuration>
+    <configuration name="text.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/src/main/resources/backend/js/text.js" working-dir="$PROJECT_DIR$/src/main/resources/backend/js">
+      <method v="2" />
+    </configuration>
+    <configuration name="RiggieTakeOutApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <module name="reggie-take-out" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.hjw.RiggieTakeOutApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Node.js.text.js" />
+        <item itemvalue="Node.js.index.js" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="应用程序级" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="默认任务">
+      <changelist id="219fbaf4-44e4-40a3-bf01-8ec4305040dd" name="更改" comment="" />
+      <created>1690035030729</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1690035030729</updated>
+      <workItem from="1690035032020" duration="1538000" />
+      <workItem from="1690036582551" duration="419000" />
+      <workItem from="1690037011513" duration="1630000" />
+      <workItem from="1690038749340" duration="697000" />
+      <workItem from="1690082712973" duration="4007000" />
+      <workItem from="1690087322161" duration="4095000" />
+      <workItem from="1690095447646" duration="21000" />
+      <workItem from="1690098246066" duration="69000" />
+      <workItem from="1690106202562" duration="38000" />
+      <workItem from="1690170700716" duration="13896000" />
+      <workItem from="1690205332076" duration="5966000" />
+      <workItem from="1690254989371" duration="9396000" />
+      <workItem from="1691247152360" duration="5939000" />
+      <workItem from="1691290355240" duration="5569000" />
+      <workItem from="1691310676620" duration="9962000" />
+      <workItem from="1691388301341" duration="16470000" />
+      <workItem from="1691465508125" duration="1306000" />
+      <workItem from="1691549744844" duration="10209000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="XDebuggerManager">
+    <pin-to-top-manager>
+      <pinned-members>
+        <PinnedItemInfo parentTag="com.hjw.dto.DishDto" memberName="id" />
+        <PinnedItemInfo parentTag="org.springframework.web.context.request.ServletWebRequest" memberName="session" />
+        <PinnedItemInfo parentTag="com.hjw.pojo.Employee" memberName="id" />
+      </pinned-members>
+    </pin-to-top-manager>
+    <watches-manager>
+      <configuration name="SpringBootApplicationConfigurationType">
+        <watch expression="request.getSession().getAttribute(&quot;employee&quot;)" language="JAVA" />
+        <watch expression="employee.getId()" language="JAVA" />
+      </configuration>
+      <inline-watch fileUrl="file://$PROJECT_DIR$/src/main/java/com/hjw/controller/EmployeeController.java" line="65">
+        <watch expression="session" language="JAVA" />
+      </inline-watch>
+    </watches-manager>
+  </component>
+</project>
