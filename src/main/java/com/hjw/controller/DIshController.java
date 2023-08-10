@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.*;
 import java.sql.Wrapper;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 import java.util.concurrent.TimeUnit;
 import java.util.stream.Collectors;
 
@@ -93,6 +94,14 @@ public class DIshController
     {
         dishService.saveWithFlavor(dishDto);
 
+        // 可以直接清楚 所有缓存 dish_*
+        // Set keys = redisTemplate.keys("dish_*");
+        // redisTemplate.delete(keys);
+
+        // 可以 针对清理
+        String key = "dish_" + dishDto.getCategoryId() + "_" + dishDto.getStatus();
+        redisTemplate.delete(key);
+
         return Result.success("新增菜品成功！");
     }
 
@@ -114,6 +123,10 @@ public class DIshController
     {
         // 两张表 Dish 和 DishFlavor 的更新
         dishService.updateWithFlavor(dishDto);
+
+        // 可能 修改到别的菜品分类中
+        Set keys = redisTemplate.keys("dish_*");
+        redisTemplate.delete(keys);
 
         return Result.success("修改菜品成功！");
     }
@@ -160,10 +173,7 @@ public class DIshController
         }).collect(Collectors.toList());
 
         // 查询完成之后，将数据 缓存到redis中
-        redisTemplate.opsForValue().set(key, dishDtoList,60, TimeUnit.HOURS);
-        System.out.println("=================================================================");
-        System.out.println(dishDtoList);
-        System.out.println("=================================================================");
+        redisTemplate.opsForValue().set(key, dishDtoList, 60, TimeUnit.HOURS);
         return Result.success(dishDtoList);
     }
 
@@ -188,6 +198,11 @@ public class DIshController
     public Result<String> remove(@RequestParam List<Long> ids)
     {
         dishService.removeWithFlavor(ids);
+
+
+        // 可能 修改到别的菜品分类中
+        Set keys = redisTemplate.keys("dish_*");
+        redisTemplate.delete(keys);
 
         return Result.success("菜品删除成功！");
     }
