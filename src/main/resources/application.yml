@@ -1,5 +1,6 @@
 server:
   port: 8080
+
 spring:
   application:
     name: riggie_take_out
@@ -21,6 +22,7 @@ spring:
         max-wait: 1ms # 连接池最大阻塞等待时间
         max-idle: 4   # 连接池中最大空闲连接
         min-idle: 0
+
 mybatis-plus:
   configuration:
     #驼峰命名
