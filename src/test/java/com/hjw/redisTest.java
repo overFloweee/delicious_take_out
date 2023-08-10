@@ -17,6 +17,16 @@ class redisTest
     @Autowired
     private RedisTemplate<String, String> redisTemplate;
 
+    @Test
+    void te1()
+    {
+        Set<String> keys = redisTemplate.keys("*");
+        for (String key : keys)
+        {
+            System.out.println(key);
+        }
+        redisTemplate.delete(keys);
+    }
 
     @Test
         // 字符串 Stirng
