@@ -106,4 +106,10 @@ class RiggieTakeOutApplicationTests
 
     }
 
+    @Test  // 通用操作
+    public void test5()
+    {
+
+    }
+
 }
