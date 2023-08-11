@@ -22,7 +22,9 @@ spring:
         max-wait: 1ms # 连接池最大阻塞等待时间
         max-idle: 4   # 连接池中最大空闲连接
         min-idle: 0
-
+  cache:
+    redis:
+      time-to-live: 1800000 #设置缓存有效期
 mybatis-plus:
   configuration:
     #驼峰命名

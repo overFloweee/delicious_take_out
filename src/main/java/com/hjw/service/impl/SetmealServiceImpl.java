@@ -5,12 +5,15 @@ import com.baomidou.mybatisplus.core.conditions.update.LambdaUpdateWrapper;
 import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.hjw.common.CustomException;
+import com.hjw.dto.DishDto;
 import com.hjw.dto.SetmealDto;
 import com.hjw.mapper.SetmealMapper;
+import com.hjw.pojo.Dish;
 import com.hjw.pojo.Setmeal;
 import com.hjw.pojo.SetmealDish;
 import com.hjw.service.SetmealDishService;
 import com.hjw.service.SetmealService;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -112,4 +115,49 @@ public class SetmealServiceImpl extends ServiceImpl<SetmealMapper, Setmeal> impl
         updateWrapper.set(Setmeal::getStatus, 1);
         this.update(updateWrapper);
     }
+
+    @Override
+    public SetmealDto getByidWithDish(String id)
+    {
+
+        Setmeal setmeal = this.getById(id);
+
+        LambdaQueryWrapper<SetmealDish> queryWrapper = new LambdaQueryWrapper<>();
+        queryWrapper.eq(SetmealDish::getSetmealId, id);
+        List<SetmealDish> dishList = setmealDishService.list(queryWrapper);
+
+        SetmealDto setmealDto = new SetmealDto();
+        BeanUtils.copyProperties(setmeal, setmealDto);
+        setmealDto.setSetmealDishes(dishList);
+
+        return setmealDto;
+
+    }
+
+    @Override
+    public void updateWithDish(SetmealDto setmealDto)
+    {
+
+        // 更新setmeal表
+        this.updateById(setmealDto);
+        // 删除setmealdish关联数据
+        Long id = setmealDto.getId();
+        LambdaQueryWrapper<SetmealDish> queryWrapper = new LambdaQueryWrapper<>();
+        queryWrapper.eq(SetmealDish::getSetmealId, id);
+        setmealDishService.remove(queryWrapper);
+
+        // 插入setmealDish关联数据
+        List<SetmealDish> setmealDishes = setmealDto.getSetmealDishes();
+
+        for (SetmealDish setmealDish : setmealDishes)
+        {
+            setmealDish.setSetmealId(id);
+        }
+
+        setmealDishService.saveBatch(setmealDishes);
+
+
+    }
+
+
 }

@@ -3,11 +3,9 @@ package com.hjw.controller;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.hjw.common.Result;
+import com.hjw.dto.DishDto;
 import com.hjw.dto.SetmealDto;
-import com.hjw.pojo.Category;
-import com.hjw.pojo.Dish;
-import com.hjw.pojo.Setmeal;
-import com.hjw.pojo.SetmealDish;
+import com.hjw.pojo.*;
 import com.hjw.service.CategoryService;
 import com.hjw.service.DishService;
 import com.hjw.service.SetmealDishService;
@@ -15,11 +13,16 @@ import com.hjw.service.SetmealService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Set;
+import java.util.concurrent.TimeUnit;
+import java.util.stream.Collectors;
 
 @RestController
 @Slf4j
@@ -33,6 +36,7 @@ public class SetmealController
 
 
     @GetMapping("/list")
+    @Cacheable(value = "setmealCache",key = "#setmeal.categoryId + '_'+ #setmeal.status")
     public Result<List<Setmeal>> list(Setmeal setmeal)
     {
         Long id = setmeal.getCategoryId();
@@ -90,6 +94,7 @@ public class SetmealController
 
 
     @PostMapping
+    @CacheEvict(value = "setmealCache",allEntries = true)
     public Result<String> save(@RequestBody SetmealDto setmealDto)
     {
         setmealService.saveWithDish(setmealDto);
@@ -99,6 +104,7 @@ public class SetmealController
 
     // 批量删除
     @DeleteMapping
+    @CacheEvict(value = "setmealCache",allEntries = true)
     public Result<String> delete(@RequestParam List<Long> ids)
     {
         setmealService.removeWithDish(ids);
@@ -107,6 +113,7 @@ public class SetmealController
 
     // 修改售卖状态 为 停售
     @PostMapping("/status/0")
+    @CacheEvict(value = "setmealCache",allEntries = true)
     public Result<String> updateStatusFalse(@RequestParam List<Long> ids)
     {
         setmealService.updateStatusFalse(ids);
@@ -116,9 +123,36 @@ public class SetmealController
 
     // 修改售卖状态 为 启售
     @PostMapping("/status/1")
+    @CacheEvict(value = "setmealCache",allEntries = true)
+
     public Result<String> updateStatusTrue(@RequestParam List<Long> ids)
     {
         setmealService.updateStatusTrue(ids);
         return Result.success("启售成功！");
     }
+
+
+    // 数据回显
+    @GetMapping("/{id}")
+    public Result<SetmealDto> query(@PathVariable String id)
+    {
+        // 需要查询两张表
+        SetmealDto setmealDto = setmealService.getByidWithDish(id);
+
+        return Result.success(setmealDto);
+
+    }
+    // 修改菜品
+    @PutMapping
+    @CacheEvict(value = "setmealCache",allEntries = true)
+    public Result<String> update(@RequestBody SetmealDto setmealDto)
+    {
+        // 两张表 Setmeal 和 SetmealDish 的更新
+        setmealService.updateWithDish(setmealDto);
+
+
+        return Result.success("修改套餐成功！");
+    }
+
+
 }
