@@ -44,7 +44,7 @@ spring:
   redis:
     host: localhost
     port: 6379
-    #    password: H2232285004
+#    password: H2232285004
     database: 0 # 默认操作的是 0 号数据库
     jedis:
       # 连接池配置
@@ -67,3 +67,4 @@ mybatis-plus:
 
 reggie:
   path: E:\IntelliJ IDEA\Project\riggie-take-out\src\main\resources\static\
+

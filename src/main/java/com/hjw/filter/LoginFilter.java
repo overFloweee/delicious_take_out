@@ -37,7 +37,12 @@ public class LoginFilter implements Filter
 
         String[] urls = new String[]{
                 "/employee/login", "/employee/logout", "/backend/**", "/front/**",
-                "/user/sendMsg","/user/login"
+                "/user/sendMsg","/user/login",
+                "/doc.html",
+                "/webjars/**",
+                "/swagger-resources",
+                "/v2/api-docs"
+
         };
 
         // URL 匹配上了 urls，则直接放行
