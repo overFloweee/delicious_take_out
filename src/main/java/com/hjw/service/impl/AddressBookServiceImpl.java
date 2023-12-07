@@ -6,12 +6,19 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.hjw.mapper.AddressBookMapper;
 import com.hjw.pojo.AddressBook;
 import com.hjw.service.AddressBookService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import javax.servlet.http.HttpSession;
 
 @Service
 public class AddressBookServiceImpl extends ServiceImpl<AddressBookMapper, AddressBook> implements AddressBookService
 {
+
+    @Autowired
+    private HttpSession session;
+
     @Override
     @Transactional
     public void updateDefault(AddressBook addressBook)
@@ -28,5 +35,13 @@ public class AddressBookServiceImpl extends ServiceImpl<AddressBookMapper, Addre
         updateWrapper.eq(AddressBook::getId, id);
         updateWrapper.set(AddressBook::getIsDefault, 1);
         this.update(updateWrapper);
+    }
+
+    @Override
+    @Transactional
+    public void updateAddress(AddressBook addressBook)
+    {
+
+        this.updateById(addressBook);
     }
 }

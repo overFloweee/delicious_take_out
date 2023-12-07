@@ -1,5 +1,5 @@
 server:
-  port: 8080
+  port: 8081
 
 spring:
   application:
@@ -42,10 +42,10 @@ spring:
       username: root
       password: H2232285004
   redis:
-    host: localhost
+    host: 47.113.227.155
     port: 6379
-#    password: H2232285004
-    database: 0 # 默认操作的是 0 号数据库
+    password: H2232285004
+    database: 1 # 默认操作的是 0 号数据库
     jedis:
       # 连接池配置
       pool:
@@ -65,6 +65,7 @@ mybatis-plus:
     db-config:
       id-type: ASSIGN_ID
 
+# 图片路径
 reggie:
-  path: E:\IntelliJ IDEA\Project\riggie-take-out\src\main\resources\static\
+  path: G:\JAVA\Project\riggie-take-out\src\main\resources\static\
 

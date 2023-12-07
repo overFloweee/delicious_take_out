@@ -7,9 +7,9 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 import java.sql.SQLIntegrityConstraintViolationException;
 
 
+@Slf4j
 // 全局异常处理器
 @RestControllerAdvice
-@Slf4j
 public class GlobalExceptionHandler
 {
     // 字段 属性值重复异常

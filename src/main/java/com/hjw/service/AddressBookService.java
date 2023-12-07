@@ -8,4 +8,6 @@ import org.springframework.stereotype.Service;
 public interface AddressBookService extends IService<AddressBook>
 {
     void updateDefault(AddressBook addressBook);
+
+    void updateAddress(AddressBook addressBook);
 }

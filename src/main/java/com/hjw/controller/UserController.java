@@ -1,5 +1,6 @@
 package com.hjw.controller;
 
+import cn.hutool.core.util.RandomUtil;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.hjw.common.Result;
 import com.hjw.pojo.User;
@@ -34,6 +35,8 @@ public class UserController
             one = new User();
             one.setPhone(phone);
             one.setStatus(1);
+            String name = RandomUtil.randomString("abcdefghijklmnopqrstuvwxyz1234567890", 6);
+            one.setName(name);
             userService.save(one);
         }
 

@@ -29,6 +29,8 @@ public class CommonController
     @PostMapping("/upload")
     public Result<String> upload(MultipartFile file)
     {
+
+
         // file是一个临时文件，需要转存到指定路径，否则请求完成之后就会被删除
 
         // 1、获取原始文件的后缀

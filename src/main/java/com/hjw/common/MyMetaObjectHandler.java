@@ -39,7 +39,12 @@ public class MyMetaObjectHandler implements MetaObjectHandler
     public void updateFill(MetaObject metaObject)
     {
         Long operateId = (Long) request.getSession().getAttribute("employee");
+        if (operateId == null)
+        {
+            operateId = (Long) request.getSession().getAttribute("user");
+        }
         metaObject.setValue("updateTime", LocalDateTime.now());
         metaObject.setValue("updateUser", operateId);
+
     }
 }

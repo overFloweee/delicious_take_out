@@ -20,13 +20,17 @@ public class AddressBookController
     @Autowired
     private AddressBookService addressBookService;
 
+
     /**
      * 查询指定用户的全部地址
      */
     @GetMapping("/list")
-    public Result<List<AddressBook>> list()
+    public Result<List<AddressBook>> list(HttpSession session)
     {
-        List<AddressBook> list = addressBookService.list();
+        Long userId = (Long) session.getAttribute("user");
+        LambdaQueryWrapper<AddressBook> wrapper = new LambdaQueryWrapper<>();
+        wrapper.eq(AddressBook::getUserId, userId);
+        List<AddressBook> list = addressBookService.list(wrapper);
         return Result.success(list);
     }
 
@@ -51,6 +55,16 @@ public class AddressBookController
         log.info("addressBook:{}", addressBook);
         addressBookService.save(addressBook);
         return Result.success(addressBook);
+    }
+
+    /**
+     * 更新地址
+     */
+    @PutMapping
+    public Result<String> updateAddress(@RequestBody AddressBook addressBook)
+    {
+        addressBookService.updateAddress(addressBook);
+        return Result.success("修改成功！");
     }
 
     /**
@@ -92,7 +106,6 @@ public class AddressBookController
             return Result.success(addressBook);
         }
     }
-
 
 
 }

@@ -136,4 +136,6 @@ class redisTest
         System.out.println(redisTemplate.type("set1"));
     }
 
+
+
 }

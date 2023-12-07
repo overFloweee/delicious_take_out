@@ -43,7 +43,6 @@
 
   // 响应拦截器
   service.interceptors.response.use(res => {
-      console.log('---响应拦截器---',res)
       if (res.data.code === 0 && res.data.msg === 'NOTLOGIN') {// 返回登录页面
         window.top.location.href = '../page/login.html'
       } else {
