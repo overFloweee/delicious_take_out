@@ -12,12 +12,12 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @ServletComponentScan
 @EnableTransactionManagement
 @EnableCaching
-public class RiggieTakeOutApplication
+public class TakeOutApplication
 {
 
     public static void main(String[] args)
     {
-        SpringApplication.run(RiggieTakeOutApplication.class, args);
+        SpringApplication.run(TakeOutApplication.class, args);
     }
 
 }

@@ -42,8 +42,6 @@ public class OrderController
     }
 
 
-    // TODO：前台用户个人信息界面完善、显示
-
     @GetMapping("/userPage")
     public Result<Page> userPage(@RequestParam(defaultValue = "1") Long page, @RequestParam(defaultValue = "1") Long pageSize)
     {
@@ -119,11 +117,18 @@ public class OrderController
 
         if (!isOk)
         {
-            return Result.success("配送失败");
+            return Result.error("配送失败");
 
         }
         return Result.success(isOk);
 
+    }
+
+    @PostMapping("/again")
+    public Result again(@RequestBody Orders orders)
+    {
+        orderService.again(orders.getId());
+        return Result.success("再来一单成功！");
     }
 
 

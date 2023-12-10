@@ -175,6 +175,9 @@
                 const res = await orderAgainApi({id: this.order[0].id})
                 if (res.code === 1) {
                     window.requestAnimationFrame(() => {
+                        this.$notify({type: 'success', message: "再来一单成功！"});
+                        setTimeout(() => {
+                        }, 1000)
                         window.location.href = '../index.html'
                     })
                 } else {
