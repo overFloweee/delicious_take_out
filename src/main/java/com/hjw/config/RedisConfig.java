@@ -1,5 +1,6 @@
 package com.hjw.config;
 
+import org.springframework.boot.autoconfigure.data.redis.RedisAutoConfiguration;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.ResolvableType;
@@ -21,7 +22,6 @@ public class RedisConfig
         redisTemplate.setHashKeySerializer(new StringRedisSerializer());
 
         redisTemplate.setConnectionFactory(redisConnectionFactory);
-
         return redisTemplate;
 
     }

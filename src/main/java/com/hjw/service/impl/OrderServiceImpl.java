@@ -123,6 +123,39 @@ public class OrderServiceImpl extends ServiceImpl<OrderMapper, Orders> implement
 
     }
 
+    @Override
+    public void again(Long orderId)
+    {
+        // 获取当前用户
+        Long userId = (Long) session.getAttribute("user");
+
+        // 订单内容
+        Orders againOrder = this.getById(orderId);
+        long againOrderId = IdWorker.getId();
+        // 生成新的订单id，其他数据不变，插入订单
+        againOrder.setId(againOrderId);
+        againOrder.setNumber(String.valueOf(orderId));
+        againOrder.setStatus(2);
+        this.save(againOrder);
+
+
+        // 订单 明细
+        LambdaQueryWrapper<OrderDetail> wrapper = new LambdaQueryWrapper<>();
+        wrapper.eq(OrderDetail::getOrderId, orderId);
+        List<OrderDetail> list = orderDetailService.list(wrapper);
+
+        List<OrderDetail> collects = list.stream().map((item) ->
+        {
+            item.setOrderId(againOrderId);
+            item.setId(IdWorker.getId());
+            return item;
+
+        }).collect(Collectors.toList());
+        orderDetailService.saveBatch(collects);
+
+
+    }
+
 
     // @Transactional
     // public void submit(Orders orders) {

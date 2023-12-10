@@ -107,5 +107,12 @@ public class AddressBookController
         }
     }
 
+    @DeleteMapping
+    public Result<Boolean> delAddressBook(@RequestParam Long ids)
+    {
+        boolean b = addressBookService.removeById(ids);
+        return Result.success(b);
+    }
+
 
 }

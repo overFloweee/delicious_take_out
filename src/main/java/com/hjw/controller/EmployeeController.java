@@ -95,18 +95,6 @@ public class EmployeeController
         String password = DigestUtils.md5DigestAsHex("123456".getBytes());
         employee.setPassword(password);
 
-        // 设置创建时间
-        // employee.setCreateTime(LocalDateTime.now());
-        // 设置更新时间
-        // employee.setUpdateTime(LocalDateTime.now());
-
-        // 设置 创建人的id
-        // Long userId = (Long) request.getSession().getAttribute("employee");
-        // employee.setCreateUser(userId);
-        // 设置 更新人的id
-        // employee.setUpdateUser(userId);
-
-
         employeeService.save(employee);
 
         return Result.success("新增员工成功！");
@@ -160,6 +148,4 @@ public class EmployeeController
         return Result.success(emp);
 
     }
-
-
 }

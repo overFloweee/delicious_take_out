@@ -124,7 +124,6 @@ public class SetmealController
     // 修改售卖状态 为 启售
     @PostMapping("/status/1")
     @CacheEvict(value = "setmealCache",allEntries = true)
-
     public Result<String> updateStatusTrue(@RequestParam List<Long> ids)
     {
         setmealService.updateStatusTrue(ids);

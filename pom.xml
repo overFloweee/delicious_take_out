@@ -9,11 +9,8 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.hjw</groupId>
-    <artifactId>reggie-take-out</artifactId>
+    <artifactId>delicious-take-out</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-
-    <name>riggie-take-out</name>
-    <description>riggie-take-out</description>
 
     <properties>
         <java.version>11</java.version>
