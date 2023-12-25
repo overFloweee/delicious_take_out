@@ -72,4 +72,4 @@ mybatis-plus:
 
 # 图片路径
 reggie:
-  path: G:\JAVA\Project\delicious-take-out\src\main\resources\static\
+  path: src\main\resources\static\
