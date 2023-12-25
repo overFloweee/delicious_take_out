@@ -3,12 +3,9 @@ package com.hjw.controller;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.hjw.common.Result;
-import com.hjw.dto.DishDto;
 import com.hjw.dto.SetmealDto;
 import com.hjw.pojo.*;
 import com.hjw.service.CategoryService;
-import com.hjw.service.DishService;
-import com.hjw.service.SetmealDishService;
 import com.hjw.service.SetmealService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
@@ -16,13 +13,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
-import java.util.Set;
-import java.util.concurrent.TimeUnit;
-import java.util.stream.Collectors;
 
 @RestController
 @Slf4j

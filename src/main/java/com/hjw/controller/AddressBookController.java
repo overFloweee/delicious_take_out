@@ -7,7 +7,6 @@ import com.hjw.service.AddressBookService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
 import javax.servlet.http.HttpSession;
 import java.util.List;
 
@@ -94,7 +93,6 @@ public class AddressBookController
         queryWrapper.eq(AddressBook::getUserId, session.getAttribute("user"));
         queryWrapper.eq(AddressBook::getIsDefault, 1);
 
-        // SQL:select * from address_book where user_id = ? and is_default = 1
         AddressBook addressBook = addressBookService.getOne(queryWrapper);
 
         if (null == addressBook)
