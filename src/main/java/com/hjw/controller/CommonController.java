@@ -69,7 +69,7 @@ public class CommonController
             ServletOutputStream ops = response.getOutputStream();
             response.setContentType("image/jpeg");
 
-            int len = 0;
+            int len;
             byte[] bytes = new byte[1024];
             while ((len = fis.read(bytes)) != -1)
             {

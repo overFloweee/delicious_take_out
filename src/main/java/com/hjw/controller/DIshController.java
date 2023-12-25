@@ -33,9 +33,6 @@ public class DIshController
     private DishService dishService;
     @Autowired
     private CategoryService categoryService;
-    @Autowired
-    private RedisTemplate redisTemplate;
-
 
     // 分页查询
     @GetMapping("/page")
