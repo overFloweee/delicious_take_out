@@ -37,7 +37,7 @@ public class LoginFilter implements Filter
 
         String[] urls = new String[]{
                 "/employee/login", "/employee/logout", "/backend/**", "/front/**",
-                "/user/sendMsg","/user/login",
+                "/user/sendMsg","/user/login","/user/test",
                 "/doc.html",
                 "/webjars/**",
                 "/swagger-resources",

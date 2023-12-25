@@ -52,4 +52,12 @@ public class UserController
         return Result.success("退出登陆成功!");
     }
 
+    @GetMapping("/test")
+    public Result<String> test()
+    {
+        System.out.println("test...............................");
+        return Result.success("测试成功！!");
+    }
+
+
 }
