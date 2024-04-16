@@ -60,10 +60,10 @@
         ></el-table-column>
         <el-table-column prop="image" label="图片"  align="center">
           <template slot-scope="{ row }">
-            <el-image style="width: auto; height: 40px; border:none;cursor: pointer;" :src="getImage(row.image)" :preview-src-list="[ `/common/download?name=${row.image}` ]" >
+            <el-image style="width: auto; height: 40px; border:none;cursor: pointer;" :src="row.image" :preview-src-list="[ row.image ]" >
               <div slot="error" class="image-slot">
                 <img src="../../images/noImg.png" style="width: auto; height: 40px; border:none;" >
-              </div> 
+              </div>
             </el-image>
           </template>
         </el-table-column>
@@ -179,7 +179,7 @@
             })
           },
           getImage (image) {
-            return `/common/download?name=${image}`
+            return image;
           },
           handleQuery() {
             this.page = 1;

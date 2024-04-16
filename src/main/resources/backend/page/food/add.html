@@ -344,7 +344,7 @@
                 console.log('this.dishFlavors',this.dishFlavors)
                 // this.ruleForm.id = res.data.data.categoryId
                 // this.imageUrl = res.data.data.image
-                this.imageUrl = `/common/download?name=${res.data.image}`
+                this.imageUrl = res.data.image
               } else {
                 this.$message.error(res.msg || '操作失败')
               }
@@ -455,7 +455,7 @@
                 delete params.dishFlavors
                 if(!this.imageUrl){
                   this.$message.error('请上传菜品图片')
-                  return 
+                  return
                 }
                 if (this.actionType == 'add') {
                   delete params.id
@@ -510,8 +510,10 @@
             if(response.code === 0 && response.msg === '未登录'){
               window.top.location.href = '../login/login.html'
             }else{
-              this.imageUrl = `/common/download?name=${response.data}`
+              // this.imageUrl = `/common/download?name=${response.data}`
+              this.imageUrl = response.data
               this.ruleForm.image = response.data
+
             }
           },
 
@@ -531,7 +533,7 @@
               return file
             }
           },
-          
+
           goBack(){
             window.parent.menuHandle({
               id: '4',

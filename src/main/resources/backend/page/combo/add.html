@@ -278,7 +278,7 @@
           <i slot="prefix" class="el-input__icon el-icon-search" style="cursor: pointer" @click="seachHandle"></i>
         </el-input>
         <!-- <AddDish ref="adddish" :check-list="checkList" :seach-key="seachKey" @checkList="getCheckList" /> -->
-        
+
         <div class="addDishCon">
           <div class="leftCont">
             <div
@@ -347,7 +347,7 @@
             </div>
           </div>
         </div>
-        
+
         <span slot="footer" class="dialog-footer">
           <el-button @click="handleClose">取 消</el-button>
           <el-button type="primary" @click="addTableList">确 定</el-button>
@@ -464,7 +464,7 @@
                 this.ruleForm = res.data
                 this.ruleForm.status = res.data.status === '1'
                 this.ruleForm.price = res.data.price / 100
-                this.imageUrl = `/common/download?name=${res.data.image}`
+                this.imageUrl = res.data.image
                 this.checkList = res.data.setmealDishes
                 this.dishTable = res.data.setmealDishes
                 this.ruleForm.idType = res.data.categoryId
@@ -540,11 +540,11 @@
                 prams.categoryId = this.ruleForm.idType
                 if(prams.setmealDishes.length < 1){
                   this.$message.error('请选择菜品！')
-                  return 
+                  return
                 }
                 if(!this.imageUrl){
                   this.$message.error('请上传套餐图片')
-                  return 
+                  return
                 }
                 // delete prams.dishList
                 if (this.actionType == 'add') {
@@ -605,7 +605,7 @@
             if(response.code === 0 && response.msg === '未登录'){
               window.top.location.href = '../login/login.html'
             }else{
-              this.imageUrl = `/common/download?name=${response.data}`
+              this.imageUrl = response.data
               this.ruleForm.image = response.data
             }
           },

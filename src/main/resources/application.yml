@@ -1,6 +1,5 @@
 server:
   port: 8081
-
 spring:
   application:
     name: delicious_take_out
@@ -38,13 +37,12 @@ spring:
   datasource:
     druid:
       driver-class-name: com.mysql.cj.jdbc.Driver
-      url: jdbc:mysql://47.113.227.155:3306/reggie?serverTimezone=Asia/Shanghai&useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&useSSL=false&allowPublicKeyRetrieval=true
+      url: jdbc:mysql://localhost:3306/reggie?serverTimezone=Asia/Shanghai&useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&useSSL=false&allowPublicKeyRetrieval=true
       username: root
-      password: H2232285004
+      password: 123456
   redis:
-    host: 47.113.227.155
+    host: localhost
     port: 6379
-    password: H2232285004
     database: 1 # 默认操作的是 0 号数据库
     jedis:
       # 连接池配置
@@ -69,7 +67,16 @@ mybatis-plus:
   global-config:
     db-config:
       id-type: ASSIGN_ID
-
 # 图片路径
-reggie:
-  path: src\main\resources\static\
+#reggie:
+#  path: G:\JAVA\Project\delicious-take-out\src\main\resources\static\
+oss:
+  aliyun:
+    endpoint: oss-cn-shenzhen.aliyuncs.com #Bucket所在地域对应的Endpoint
+    file: delicious-take-out/images/  # 文件夹名称
+    accessKeyId: LTAI5tJvWNk47ShfnoooWtHn #填写自己的keyId
+    accessKeySecret: mMLQ8Yg2Yh80sa9d52jm71ZSe9dL43 #填写自己的KeySecret
+    bucket:  jtqifei-blog #存储空间列表名称
+    domain: https://jtqifei-blog.oss-cn-shenzhen.aliyuncs.com/ #以北京为例,返回前端用于组合文件
+    fullName: https://jtqifei-blog.oss-cn-shenzhen.aliyuncs.com/delicious-take-out/images/
+

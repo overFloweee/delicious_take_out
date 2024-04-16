@@ -1,5 +1,9 @@
 package com.hjw.controller;
 
+import cn.hutool.core.lang.UUID;
+import cn.hutool.core.util.IdUtil;
+import com.aliyun.oss.OSS;
+import com.aliyun.oss.model.PutObjectRequest;
 import com.hjw.common.Result;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
@@ -8,86 +12,96 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
+
+import javax.annotation.Resource;
 import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletResponse;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
-import java.util.UUID;
+import java.io.InputStream;
 
 @RestController
 @Slf4j
 @RequestMapping("/common")
 public class CommonController
 {
-    @Value("${reggie.path}")
-    private String path;
+    // @Value("${reggie.path}")
+    // private String path;
+
+    @Resource
+    private OSS oss;
+
+    @Value("${oss.aliyun.bucket}")
+    public String BUCKET;
+
+    @Value("${oss.aliyun.domain}")
+    public String DOMAIN;
+
+    @Value("${oss.aliyun.file}")
+    public String fileDir;
+
 
     // 文件上传
     @PostMapping("/upload")
     public Result<String> upload(MultipartFile file)
     {
-
-
-        // file是一个临时文件，需要转存到指定路径，否则请求完成之后就会被删除
-
-        // 1、获取原始文件的后缀
-        String originalFilename = file.getOriginalFilename();
-        String suffix = originalFilename.substring(originalFilename.lastIndexOf("."));
-        // 2、使用UUID生成name
-        String fileName = UUID.randomUUID().toString() +suffix;
-
-        // 需要判断目录 path是否存在，如果不存在则创建
-        File dir = new File(path);
-        if (!dir.exists())
-        {
-            dir.mkdirs();
-        }
         try
         {
-            // 转存到指定路径 (getOriginalFilename获取原始文件名)
-            file.transferTo(new File(path + fileName));
+            InputStream inputStream = file.getInputStream();
+            // 获取上传文件名称
+            String fullename = file.getOriginalFilename();
+            // 截取文件扩展名
+            String ext = null;
+            if (fullename != null)
+            {
+                ext = fullename.substring(fullename.lastIndexOf("."));
+            }
+            // 自定义文件名称
+            String uuid = IdUtil.simpleUUID();
+            String fileName = uuid + ext;
+            // 组合阿里云OSS上传参数  依次为 存储空间名，文件名（可以包括文件夹）,文件流
+            // 注意对象存储没有文件夹概念，如果要区分文件可以再文件名加/  eg:/2021/04/16/202111222555.png
+            PutObjectRequest putObjectRequest = new PutObjectRequest(BUCKET, fileDir + fileName, inputStream);
+            // 上传
+            oss.putObject(putObjectRequest);
+            return Result.success(DOMAIN + fileDir + fileName);
         }
         catch (IOException e)
         {
             e.printStackTrace();
         }
-
-        return Result.success(fileName);
+        return null;
     }
 
     // 文件下载
-    @GetMapping("download")
-    public void download(String name, HttpServletResponse response)
-    {
-        try
-        {
-            // 输入流，读取文件内容
-            FileInputStream fis = new FileInputStream(path + name);
-
-            // 输出流，将文件写会浏览器
-            ServletOutputStream ops = response.getOutputStream();
-            response.setContentType("image/jpeg");
-
-            int len;
-            byte[] bytes = new byte[1024];
-            while ((len = fis.read(bytes)) != -1)
-            {
-                ops.write(bytes, 0, len);
-                ops.flush();
-            }
-
-            ops.close();
-            fis.close();
-
-
-        }
-        catch (IOException e)
-        {
-            log.error(e.getMessage());
-        }
-
-
-    }
+    // @GetMapping("/download")
+    // public void download(String name, HttpServletResponse response)
+    // {
+    //     try
+    //     {
+    //         // 输入流，读取文件内容
+    //         FileInputStream fis = new FileInputStream(path + name);
+    //
+    //         // 输出流，将文件写会浏览器
+    //         ServletOutputStream ops = response.getOutputStream();
+    //         response.setContentType("image/jpeg");
+    //
+    //         int len;
+    //         byte[] bytes = new byte[1024];
+    //         while ((len = fis.read(bytes)) != -1)
+    //         {
+    //             ops.write(bytes, 0, len);
+    //             ops.flush();
+    //         }
+    //
+    //         ops.close();
+    //         fis.close();
+    //     }
+    //     catch (IOException e)
+    //     {
+    //         log.error(e.getMessage());
+    //     }
+    // }
 
 }
