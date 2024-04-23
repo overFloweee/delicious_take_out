@@ -22,7 +22,7 @@
       <div class="tableBar">
         <el-input
           v-model="input"
-          placeholder="请输入员工姓名"
+          placeholder="请输入用户姓名"
           style="width: 250px"
           clearable
            @keyup.enter.native="handleQuery"
@@ -34,12 +34,6 @@
             @click="handleQuery"
           ></i>
         </el-input>
-        <el-button
-          type="primary"
-          @click="addMemberHandle('add')"
-        >
-          + 添加员工
-        </el-button>
       </div>
       <el-table
         :data="tableData"
@@ -48,7 +42,7 @@
       >
         <el-table-column
           prop="name"
-          label="员工姓名"
+          label="用户姓名"
         ></el-table-column>
         <el-table-column
           prop="username"
@@ -70,10 +64,11 @@
         >
           <template slot-scope="scope">
             <el-button
-              type="text"
-              size="small"
-              class="blueBug"
-              @click="addMemberHandle(scope.row.id)"
+                    type="text"
+                    size="small"
+                    class="blueBug"
+                    @click="addMemberHandle(scope.row.id)"
+                    :class="{notAdmin:user !== 'admin'}"
             >
               编辑
             </el-button>
@@ -136,6 +131,7 @@
               pageSize: this.pageSize,
               name: this.input ? this.input : undefined
             }
+            // todo
             await getMemberList(params).then(res => {
               if (String(res.code) === '1') {
                 this.tableData = res.data.records || []
@@ -155,13 +151,13 @@
               window.parent.menuHandle({
                 id: '2',
                 url: '/backend/page/member/add.html',
-                name: '添加员工'
+                name: '添加用户'
               },true)
             } else {
               window.parent.menuHandle({
                 id: '2',
                 url: '/backend/page/member/add.html?id='+st,
-                name: '修改员工'
+                name: '修改用户'
               },true)
             }
           },

@@ -3,13 +3,14 @@ package com.hjw.controller;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.hjw.pojo.Employee;
 import com.hjw.common.Result;
+import com.hjw.pojo.Employee;
 import com.hjw.service.EmployeeService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.DigestUtils;
 import org.springframework.web.bind.annotation.*;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -61,7 +62,7 @@ public class EmployeeController
         log.info(session.getId());
 
 
-        return Result.success(emp).add("JESSIONID",session.getId());
+        return Result.success(emp).add("JESSIONID", session.getId());
     }
 
     // 员工退出账号
@@ -95,7 +96,9 @@ public class EmployeeController
 
     // 分页查询
     @GetMapping("/page")
-    public Result<Page> page(@RequestParam(defaultValue = "1") Integer page, @RequestParam(defaultValue = "10") Integer pageSize, String name)
+    public Result<Page> page(@RequestParam(defaultValue = "1") Integer page,
+                             @RequestParam(defaultValue = "10") Integer pageSize, String name
+    )
     {
         log.info("分页查询，当前是第 {} 页，每页 {} 条数据 ", page, pageSize);
 
@@ -135,6 +138,14 @@ public class EmployeeController
         Employee emp = employeeService.getOne(wrapper);
         log.info("即将编辑的员工数据为 ： {} ", emp);
         return Result.success(emp);
+
+    }
+
+
+    @GetMapping("/getInfo/{id}")
+    public Result<Employee> getInfo(@PathVariable Long id)
+    {
+        return Result.success(employeeService.getById(id));
 
     }
 }

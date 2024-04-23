@@ -121,10 +121,12 @@
                 menuActived: '2',
                 userInfo: {},
                 menuList: [
-                    // {
-                    //   id: '1',
-                    //   name: '门店管理',
-                    //   children: [
+                    {
+                      id: '1',
+                      name: '用户管理',
+                      url: 'page/user/list.html',
+                      icon: 'icon-member'
+                    },
                     {
                         id: '2',
                         name: '员工管理',
@@ -165,12 +167,15 @@
                 timer: null
             }
         },
-        computed: {},
+        computed: {
+
+        },
         created() {
             const userInfo = window.localStorage.getItem('userInfo')
             if (userInfo) {
                 this.userInfo = JSON.parse(userInfo)
             }
+            this.generateMenu()
             this.closeLoading()
         },
         beforeDestroy() {
@@ -209,6 +214,22 @@
                 this.timer = setTimeout(() => {
                     this.loading = false
                 }, 1000)
+            },
+            generateMenu() {
+                switch (this.userInfo.role) {
+                    case 0: // 员工
+                        this.menuList = this.menuList.filter(item => item.id !== '2'); // 移除员工管理
+                        break;
+                    case 1: // 商家
+                        // Do nothing, show all menu items
+                        break;
+                    case 2: // 管理员
+                        this.menuList = this.menuList.filter(item => item.id === '2'); // 只保留员工管理
+                        break;
+                    default:
+                        // Default behavior, show all menu items
+                        break;
+                }
             }
         }
     })

@@ -40,3 +40,13 @@ function queryEmployeeById (id) {
     method: 'get'
   })
 }
+
+
+
+// 获取后台用户的信息
+function queryEmployeeInfoById (id) {
+  return $axios({
+    url: `/employee/getInfo/${id}`,
+    method: 'get',
+  })
+}
