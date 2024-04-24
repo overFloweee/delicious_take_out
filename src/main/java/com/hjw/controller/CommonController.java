@@ -64,6 +64,7 @@ public class CommonController
         catch (IOException e)
         {
             log.info("error", e);
+            log.info("error", e);
         }
         return null;
     }
