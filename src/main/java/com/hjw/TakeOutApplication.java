@@ -12,12 +12,11 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @ServletComponentScan
 @EnableTransactionManagement
 @EnableCaching
-public class TakeOutApplication
-{
+public class TakeOutApplication {
 
-    public static void main(String[] args)
-    {
+    public static void main(String[] args) {
         SpringApplication.run(TakeOutApplication.class, args);
+//        System.out.println();
     }
 
 }
