@@ -76,7 +76,7 @@ oss:
     endpoint: oss-cn-shenzhen.aliyuncs.com #Bucket所在地域对应的Endpoint
     file: delicious-take-out/images/  # 文件夹名称
     accessKeyId: LTAI5tJvWNk47ShfnoooWtHn #填写自己的keyId
-    accessKeySecret: mMLQ8Yg2Yh80sa9d52jm71ZSe9dL43 #填写自己的KeySecret
+    accessKeySecret: xxx #填写自己的KeySecret
     bucket:  jtqifei-blog #存储空间列表名称
     domain: https://jtqifei-blog.oss-cn-shenzhen.aliyuncs.com/ #以北京为例,返回前端用于组合文件
     fullName: https://jtqifei-blog.oss-cn-shenzhen.aliyuncs.com/delicious-take-out/images/
