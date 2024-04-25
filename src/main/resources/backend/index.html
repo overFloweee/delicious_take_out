@@ -122,10 +122,10 @@
                 userInfo: {},
                 menuList: [
                     {
-                      id: '1',
-                      name: '用户管理',
-                      url: 'page/user/list.html',
-                      icon: 'icon-member'
+                        id: '1',
+                        name: '用户管理',
+                        url: 'page/user/list.html',
+                        icon: 'icon-member'
                     },
                     {
                         id: '2',
@@ -167,9 +167,7 @@
                 timer: null
             }
         },
-        computed: {
-
-        },
+        computed: {},
         created() {
             const userInfo = window.localStorage.getItem('userInfo')
             if (userInfo) {
@@ -218,19 +216,21 @@
             generateMenu() {
                 switch (this.userInfo.role) {
                     case 0: // 员工
-                        this.menuList = this.menuList.filter(item => item.id !== '2'); // 移除员工管理
+                        this.menuList = this.menuList.filter(item => item.id !== '1' && item.id !== '2'); // 移除用户、员工管理
                         break;
                     case 1: // 商家
+                        this.menuList = this.menuList.filter(item => item.id !== '1'); // 移除员工管理
                         // Do nothing, show all menu items
                         break;
                     case 2: // 管理员
-                        this.menuList = this.menuList.filter(item => item.id === '2'); // 只保留员工管理
+                        this.menuList = this.menuList.filter(item => item.id !== '3' && item.id !== '4' && item.id
+                            !== '5' && item.id !== '6'); // 只留下用户、员工管理
                         break;
                     default:
-                        // Default behavior, show all menu items
                         break;
                 }
             }
+
         }
     })
 </script>
