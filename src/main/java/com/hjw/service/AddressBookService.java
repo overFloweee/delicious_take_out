@@ -5,8 +5,7 @@ import com.hjw.pojo.AddressBook;
 import org.springframework.stereotype.Service;
 
 @Service
-public interface AddressBookService extends IService<AddressBook>
-{
+public interface AddressBookService extends IService<AddressBook> {
     void updateDefault(AddressBook addressBook);
 
     void updateAddress(AddressBook addressBook);
