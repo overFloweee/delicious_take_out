@@ -61,6 +61,6 @@ public class WebMvcConfig extends WebMvcConfigurationSupport
 
     private ApiInfo apiInfo()
     {
-        return new ApiInfoBuilder().title("舌尖上的旅行").version("v1.0").description("舌尖上的旅行接口文档").build();
+        return new ApiInfoBuilder().title("美味在路上").version("v1.0").description("美味在路上接口文档").build();
     }
 }
