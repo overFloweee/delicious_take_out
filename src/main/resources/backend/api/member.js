@@ -9,8 +9,8 @@ function getMemberList (params) {
 // 修改---启用禁用接口
 function enableOrDisableEmployee (params) {
   return $axios({
-    url: '/employee',
-    method: 'put',
+    url: '/employee/isBan',
+    method: 'post',
     data: { ...params }
   })
 }

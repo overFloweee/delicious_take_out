@@ -4,9 +4,11 @@ package com.hjw.controller;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.hjw.common.Result;
+import com.hjw.dto.EmployeeRequest;
 import com.hjw.pojo.Employee;
 import com.hjw.service.EmployeeService;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.DigestUtils;
 import org.springframework.web.bind.annotation.*;
@@ -122,12 +124,48 @@ public class EmployeeController
 
     // 根据id 修改员工信息
     @PutMapping
-    public Result<String> update(HttpServletRequest request, @RequestBody Employee employee)
+    public Result<String> update(@RequestBody Employee employee)
     {
+        if (employee == null)
+        {
+            return Result.error("参数错误");
+        }
+
+        // 修改 信息
         employeeService.updateById(employee);
         return Result.success("员工信息修改成功！");
     }
 
+    // 禁用、启用
+    @PostMapping("/isBan")
+    public Result<String> isBan(@RequestBody EmployeeRequest employeeRequest)
+    {
+        if (employeeRequest == null)
+        {
+            return Result.error("参数错误");
+        }
+
+        Integer role = employeeRequest.getRole();
+        Integer status = employeeRequest.getStatus();
+        // 如果权限为管理员，则不能ban 管理员
+
+        // 权限为商家，需要被ban掉，并且则所有员工也被ban
+        if (status == 0 && role == 1)
+        {
+            LambdaQueryWrapper<Employee> wrapper = new LambdaQueryWrapper<>();
+            wrapper.eq(Employee::getRole, 0);
+            Employee e = new Employee();
+            e.setStatus(0);
+            employeeService.update(e, wrapper);
+        }
+
+
+        // 修改 信息
+        Employee employee = new Employee();
+        BeanUtils.copyProperties(employeeRequest, employee);
+        employeeService.updateById(employee);
+        return Result.success("员工信息修改成功！");
+    }
 
     // 编辑员工信息前的 回显数据
     @GetMapping("/{id}")
