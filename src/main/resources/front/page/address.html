@@ -39,7 +39,7 @@
             <img src="../images/edit.png" @click.stop.prevent="toAddressEditPage(item)"/>
             <div class="divSplit"></div>
             <div class="divDefault">
-                <img src="../images/checked_true.png" v-if="item.isDefault === 1">
+                <img src="../images/checked_true.png"  v-if="item.isDefault === 1">
                 <img src="../images/checked_false.png" @click.stop.prevent="setDefaultAddress(item)" v-else>设为默认地址
             </div>
         </div>
