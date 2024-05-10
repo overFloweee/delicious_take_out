@@ -54,7 +54,7 @@ spring:
     password: H2232285004
   cache:
     redis:
-      time-to-live: 1800000 #设置缓存有效期
+      time-to-live: 180000 #设置缓存有效期
   servlet:
     multipart:
       enabled: true
