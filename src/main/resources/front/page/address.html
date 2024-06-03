@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport"
           content="width=device-width, initial-scale=1.0, maximum-scale=1.0,user-scalable=no,minimal-ui">
-    <title>舌尖上的旅行</title>
+    <title>美味在路上</title>
     <link rel="icon" href="../images/favico.ico">
     <!--不同屏幕尺寸根字体设置-->
     <script src="../js/base.js"></script>
@@ -39,7 +39,7 @@
             <img src="../images/edit.png" @click.stop.prevent="toAddressEditPage(item)"/>
             <div class="divSplit"></div>
             <div class="divDefault">
-                <img src="../images/checked_true.png" v-if="item.isDefault === 1">
+                <img src="../images/checked_true.png"  v-if="item.isDefault === 1">
                 <img src="../images/checked_false.png" @click.stop.prevent="setDefaultAddress(item)" v-else>设为默认地址
             </div>
         </div>

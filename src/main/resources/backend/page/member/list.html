@@ -54,6 +54,11 @@
           prop="username"
           label="账号"
         ></el-table-column>
+        <el-table-column label="账号权限">
+          <template slot-scope="scope">
+            {{ String(scope.row.role) === '0' ? '员工' : String(scope.row.role) === '1'? '商家' : '管理员' }}
+          </template>
+        </el-table-column>
         <el-table-column
           prop="phone"
           label="手机号"
@@ -119,6 +124,7 @@
              pageSize: 10,
              tableData : [],
              id : '',
+             role: '',
              status : '',
           }
         },
@@ -168,13 +174,15 @@
           //状态修改
           statusHandle (row) {
             this.id = row.id
+            this.role = row.role
             this.status = row.status
             this.$confirm('确认调整该账号的状态?', '提示', {
               'confirmButtonText': '确定',
               'cancelButtonText': '取消',
               'type': 'warning'
               }).then(() => {
-              enableOrDisableEmployee({ 'id': this.id, 'status': !this.status ? 1 : 0 }).then(res => {
+              enableOrDisableEmployee({ 'id': this.id, 'status': !this.status ? 1 : 0 , 'role' : this.role
+                }).then(res => {
                 console.log('enableOrDisableEmployee',res)
                 if (String(res.code) === '1') {
                   this.$message.success('账号状态更改成功！')
