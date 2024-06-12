@@ -64,10 +64,11 @@
         >
           <template slot-scope="scope">
             <el-button
+                    disabled="true"
+                    disabled="true"
                     type="text"
                     size="small"
                     class="blueBug"
-                    disabled="true"
                     @click="addMemberHandle(scope.row.id)"
                     :class="{notAdmin:user !== 'admin'}"
             >
@@ -75,7 +76,6 @@
             </el-button>
             <el-button
               type="text"
-              disabled="true"
               size="small"
               class="delBut non"
               @click="statusHandle(scope.row)"
