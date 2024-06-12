@@ -96,16 +96,6 @@
             <groupId>com.github.xiaoymin</groupId>
             <artifactId>knife4j-spring-boot-starter</artifactId>
             <version>3.0.2</version>
-            <exclusions>
-                <exclusion>
-                    <artifactId>springfox-swagger-common</artifactId>
-                    <groupId>io.springfox</groupId>
-                </exclusion>
-                <exclusion>
-                    <artifactId>springfox-swagger2</artifactId>
-                    <groupId>io.springfox</groupId>
-                </exclusion>
-            </exclusions>
         </dependency>
 
         <dependency>
